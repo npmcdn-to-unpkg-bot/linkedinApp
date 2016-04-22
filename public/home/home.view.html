@@ -1,0 +1,310 @@
+<style>
+  /*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+ /* Toggle Styles */
+ div.absolute {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+
+
+}
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 20%;
+    top : 0px;
+    width: 0;
+    height: 100%;
+    margin-left: -20%;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: blue;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+
+}
+</style>
+
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#/">
+                    Start Bootstrap
+                </a>
+            </li>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Create a network</a>
+            </li>
+            <li>
+                <a href="#">Expand the network</a>
+            </li>
+            <li>
+                <a href="#">Update the network</a>
+            </li>
+            <li>
+                <a href="#">Search a profile</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="absolute">
+        <h1>Hi {{vm.user.firstName}} {{vm.user.linkedInAccount}} !</h1>
+        <p>You're logged in my friend!!</p>
+        <h3>All registered users:</h3>
+        <ul>
+            <li ng-repeat="user in vm.allUsers">
+                {{user.username}} ({{user.firstName}} {{user.lastName}} {{user.linkedInAccount}})
+                - <a href="#" ng-click="vm.deleteUser(user.id)">Delete</a>
+            </li>
+        </ul>
+        <p>&nbsp;</p>
+        <p><a href="#/login" class="btn btn-primary">Logout</a></p>
+        <button ng-click="myFunction()">send request</button>
+
+        <textarea ng-model='data.textdata'></textarea>
+
+        <p>{{ serverdata2 }}</p>
+
+        <h1>Expanding your network</h1>
+        <p>Choose the profession to wich you wish to expand  
+            <select name="singleSelect" ng-model="data.singleSelect">
+              <option value="All">All</option>
+              <option value="Computer">Computer Science</option>
+              <option value="Finance">Finance</option>
+              <option value="Medical">Medical</option>
+          </select>
+      </p>
+      <button ng-click="myFunction2()">Expand !</button>
+      <p>The number of the sent invitations is : {{numbaro}} </p>
+      <p>{{ counto }}</p>
+      <p>{{ serverdata }}</p>
+      <p>{{number}}</p>
+      <h1>{{a}}</h1>
+      <h1>Searching a profile</h1>
+      <div >
+        E-mail : <input type = "text" ng-model ="searchprofile.email"></input></p>
+        Identifier : <input type = "text" ng-model ="searchprofile.identifier"></input></p>
+        <table class="table">
+            <tr>
+
+                <th>Language</th>
+                
+            </tr>
+            <tr ng:repeat="item in language.lang">
+                <td><input type="text" ng:model="item.name"class="input-small"></td>           
+                
+                
+                <td>
+                    [<a href ng:click="removeItem2($index)">X</a>]
+                </td>
+            </tr>
+            <tr>
+                <td><a href ng:click="addItem2()" class="btn btn-small">add language</a></td>
+
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+
+                <th>School</th>
+                <th>Beginning</th>
+                <th>End</th>
+
+            </tr>
+            <tr ng:repeat="item in education.educ">
+                <td><input type="text" ng:model="item.name"class="input-small"></td>           
+                <td><input type="date" ng:model="item.begin" ng:required class="input-mini"></td>
+                <td><input type="date" ng:model="item.end" ng:required class="input-mini"></td>
+                
+                <td>
+                    [<a href ng:click="removeItem($index)">X</a>]
+                </td>
+            </tr>
+            <tr>
+                <td><a href ng:click="addItem()" class="btn btn-small">add item</a></td>
+
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+
+                <th>Skills</th>
+                
+            </tr>
+            <tr ng:repeat="item in skill.sk">
+                <td><input type="text" ng:model="item.name"class="input-small"></td> 
+                <td><input type="number" ng:model="item.number"class="input-small"></td>           
+                
+                
+                <td>
+                    [<a href ng:click="removeItem3($index)">X</a>]
+                </td>
+            </tr>
+            <tr>
+                <td><a href ng:click="addItem3()" class="btn btn-small">add skill</a></td>
+
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+
+                <th>Experience</th>
+                
+            </tr>
+            <tr ng:repeat="item in experience.exp">
+                <td><input type="text" ng:model="item.position"class="input-small"></td> 
+                <td><input type="text" ng:model="item.company"class="input-small"></td>           
+                
+                
+                <td>
+                    [<a href ng:click="removeItem4($index)">X</a>]
+                </td>
+            </tr>
+            <tr>
+                <td><a href ng:click="addItem4()" class="btn btn-small">add skill</a></td>
+
+            </tr>
+        </table>
+
+        <button ng-click = "searchprofile()">Search the profile</button>
+        <h1>Result</h1>
+        <table class="table">
+            <tr>
+
+                <th>Identifier</th>
+                
+            </tr>
+            <tr ng:repeat="item in searchResponse">
+                <td>{{item.identifier}}</td> 
+                <td>{{item.email}}</td> 
+                <td>{{item.url}}</td> 
+                          
+                
+                
+                
+            </tr>
+            <tr>
+                <td><a href ng:click="addItem4()" class="btn btn-small">add skill</a></td>
+
+            </tr>
+        </table>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<a href="http://localhost:8081/" class="btn btn-link">See all the loaded profiles</a>
+
+</div>
+
+</div>

@@ -1,0 +1,149 @@
+﻿<html>
+<head>
+<style>
+div {
+    display: block;
+}
+    .login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background: #222;
+    text-align: center;
+    color: #fff;
+    padding: 3em;
+}
+body {
+    font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #222222;
+    background-color: #943030;
+}
+.login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background: #222;
+    text-align: center;
+    color: #fff;
+    padding: 3em;
+}
+.row {
+    margin-left: -.9375rem;
+    margin-right: -.9375rem;
+}
+img {
+    vertical-align: middle;
+}
+.login-page h1 {
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.login-page .form-content {
+    padding: 40px 0;
+}
+.login-page .form-group {
+    padding: 8px 0;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.login-page .input-underline {
+    background: 0 0;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid hsla(0,0%,100%,.5);
+    color: #fff;
+    border-radius: 0;
+}
+
+.login-page .rounded-btn {
+    border-radius: 50px;
+    color: hsla(0,0%,100%,.8);
+    background: #222;
+    border: 2px solid hsla(0,0%,100%,.8);
+    font-size: 18px;
+    line-height: 40px;
+    padding: 0 25px;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
+</style>
+</head>
+<body>
+<div class="login-page">
+<div class="col-md-6 col-md-offset-3">
+<div class="row">
+
+<div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <form name="form" ng-submit="vm.register()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="username">First name</label>
+            <input type="text" name="firstName" id="firstName" class = "form-control input-underline input-lg" ng-model="vm.user.firstName" required />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label for="username">Last name</label>
+            <input type="text" name="lastName" id="Text1" class = "form-control input-underline input-lg" ng-model="vm.user.lastName" required />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class = "form-control input-underline input-lg" ng-model="vm.user.username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class = "form-control input-underline input-lg" ng-model="vm.user.password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+         <div class="form-group" ng-class="{ 'has-error': form.linkedInAccount.$dirty && form.linkedInAccount.$error.required }">
+            <label for="username">LinkedIn Account</label>
+            <input type="text" name="linkedInAccount" id="linkedInAccount" class = "form-control input-underline input-lg" ng-model="vm.user.linkedInAccount" required />
+            <span ng-show="form.linkedInAccount.$dirty && form.linkedInAccount.$error.required" class="help-block">LinkedIn Account is required</span>
+        </div>
+         <div class="form-group" ng-class="{ 'has-error': form.linkedInpassword.$dirty && form.linkedInpassword.$error.required }">
+            <label for="password">LinkedIn Password</label>
+            <input type="password" name="linkedInpassword" id="linkedInpassword" class = "form-control input-underline input-lg" ng-model="vm.user.linkedInpassword" required />
+            <span ng-show="form.linkedInpassword.$dirty && form.linkedInpassword.$error.required" class="help-block">LinkedIn Password is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn rounded-btn">Register</button>
+           
+            <a href="#/login" class="btn rounded-btn">Cancel</a>
+        </div>
+    </form>
+
+    </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
